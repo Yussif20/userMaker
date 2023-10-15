@@ -13,7 +13,15 @@ const AddUserForm = () => {
 
   const addUserHandler = (e) => {
     e.preventDefault();
+    if (userName.trim().length === 0) {
+      return;
+    }
+    if (+userAge <= 0) {
+      return;
+    }
     console.log(userName, userAge);
+    setUserAge("");
+    setUserName("");
   };
   return (
     <>
@@ -28,6 +36,7 @@ const AddUserForm = () => {
             type="text"
             id="username"
             onChange={userNameChangeHandler}
+            value={userName}
           />
         </div>
         <div className="flex gap-6">
@@ -37,6 +46,7 @@ const AddUserForm = () => {
             type="number"
             id="age"
             onChange={userAgeChangeHandler}
+            value={userAge}
           />
         </div>
         <button
