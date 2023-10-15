@@ -4,7 +4,7 @@ const UserList = (props) => {
       <div className="container bg-white text-green h-8 w-8">
         <ul>
           {props.users.map((user) => {
-            <li key={user}> hello{user}</li>;
+            <li key={user.name}> hello{user.name}</li>;
           })}
         </ul>
       </div>

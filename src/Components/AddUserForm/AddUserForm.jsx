@@ -1,10 +1,16 @@
 const AddUserForm = () => {
+  const addUserHandler = (e) => {
+    e.preventDefault();
+  };
   return (
     <>
-      <form className="p-16 bg-gray-400 flex flex-col gap-4 text-black">
+      <form
+        onSubmit={addUserHandler}
+        className="p-16 bg-gray-400 flex flex-col gap-4 text-black"
+      >
         <div className="flex gap-6">
-          <label htmlFor="name">Username</label>
-          <input className="bg-white" type="text" name="name" id="name" />
+          <label htmlFor="username">Username</label>
+          <input className="bg-white" type="text" id="username" />
         </div>
         <div className="flex gap-6">
           <label htmlFor="age">Age(years)</label>
