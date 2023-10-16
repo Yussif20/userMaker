@@ -5,6 +5,7 @@ import ErrorModal from "../ErrorModal/ErrorModal";
 const AddUserForm = (props) => {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
+  const [error, setError] = useState();
 
   const userNameChangeHandler = (e) => {
     setUserName(e.target.value);
@@ -16,9 +17,15 @@ const AddUserForm = (props) => {
   const addUserHandler = (e) => {
     e.preventDefault();
     if (userName.trim().length === 0) {
+      setError({
+        title: "please enter a valid name",
+      });
       return;
     }
     if (+userAge <= 0) {
+      setError({
+        title: "please enter a valid age",
+      });
       return;
     }
     props.onAddUser(userName, userAge);
@@ -26,9 +33,12 @@ const AddUserForm = (props) => {
     setUserAge("");
     setUserName("");
   };
+  const cancelHandler = () => {
+    setError(!error);
+  };
   return (
     <>
-      <ErrorModal title={"Error"} />
+      {error && <ErrorModal title={error.title} onCancel={cancelHandler} />}
       <form
         onSubmit={addUserHandler}
         className="p-16 bg-gray-400 flex flex-col gap-4 text-black"
