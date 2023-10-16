@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import ErrorModal from "../ErrorModal/ErrorModal";
 
 const AddUserForm = (props) => {
   const [userName, setUserName] = useState("");
@@ -27,6 +28,7 @@ const AddUserForm = (props) => {
   };
   return (
     <>
+      <ErrorModal title={"Error"} />
       <form
         onSubmit={addUserHandler}
         className="p-16 bg-gray-400 flex flex-col gap-4 text-black"
