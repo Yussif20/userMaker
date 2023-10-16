@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 
-const AddUserForm = () => {
+const AddUserForm = (props) => {
   const [userName, setUserName] = useState("");
   const [userAge, setUserAge] = useState("");
 
@@ -19,6 +20,7 @@ const AddUserForm = () => {
     if (+userAge <= 0) {
       return;
     }
+    props.onAddUser(userName, userAge);
     console.log(userName, userAge);
     setUserAge("");
     setUserName("");
